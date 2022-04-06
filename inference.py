@@ -4,9 +4,7 @@
 
 
 from builtins import object
-import itertools
 import util
-import random
 import busters
 import game
 

@@ -4,7 +4,7 @@
 "Feature extractors for Pacman game states"
 
 from builtins import object
-from game import Directions, Actions
+from game import Actions
 import util
 
 class FeatureExtractor(object):

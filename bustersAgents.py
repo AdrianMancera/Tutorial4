@@ -6,8 +6,6 @@ from builtins import str
 from builtins import range
 from builtins import object
 import util
-from game import Agent
-from game import Directions
 from keyboardAgents import KeyboardAgent
 import inference
 import busters
@@ -110,9 +108,8 @@ class BustersKeyboardAgent(BustersAgent, KeyboardAgent):
         return KeyboardAgent.getAction(self, gameState)
 
 from distanceCalculator import Distancer
-from game import Actions
 from game import Directions
-import random, sys
+import random
 
 '''Random PacMan Agent'''
 class RandomPAgent(BustersAgent):

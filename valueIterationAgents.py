@@ -2,7 +2,7 @@
 # -----------------------
 
 
-import mdp, util
+import util
 
 from learningAgents import ValueEstimationAgent
 

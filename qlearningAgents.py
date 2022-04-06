@@ -3,9 +3,9 @@
 
 from game import *
 from learningAgents import ReinforcementAgent
-from featureExtractors import *
 
-import random,util,math
+import random,util
+
 
 class QLearningAgent(ReinforcementAgent):
     """
@@ -27,7 +27,8 @@ class QLearningAgent(ReinforcementAgent):
         self.table_file = open("qtable.txt", "r+")
 #        self.table_file_csv = open("qtable.csv", "r+")        
         self.q_table = self.readQtable()
-        self.epsilon = 1
+        #self.epsilon = 1
+        self.epsilon = 0.05
 
     def readQtable(self):
         "Read qtable from disc"
@@ -167,13 +168,25 @@ class QLearningAgent(ReinforcementAgent):
         """
         # TRACE for transition and position to update. Comment the following lines if you do not want to see that trace
 #         print("Update Q-table with transition: ", state, action, nextState, reward)
-#         position = self.computePosition(state)
-#         action_column = self.actions[action]
+        position = self.computePosition(state)
+        action_column = self.actions[action]
 #         print("Corresponding Q-table cell to update:", position, action_column)
 
         
         
         "*** YOUR CODE HERE ***"
+
+        legalActions = self.getLegalActions(state)
+
+        if len(legalActions)<=1:
+            # Q(state,action) <- (1-self.alpha) Q(state,action) + self.alpha * (r + 0)
+            new_state_value = (1-self.alpha) * self.getQValue(state, action) + self.alpha * (reward + 0)
+            self.q_table[position][action_column] = new_state_value
+        else:
+            # Q(state,action) <- (1-self.alpha) Q(state,action) + self.alpha * (r + self.discount * max a' Q(nextState, a'))
+            new_state_value = (1 - self.alpha) * self.getQValue(state, action) + self.alpha * (reward + self.discount * self.getQValue(nextState, self.getPolicy(nextState)))
+            self.q_table[position][action_column] = new_state_value
+
 
         # TRACE for updated q-table. Comment the following lines if you do not want to see that trace
 #         print("Q-table:")

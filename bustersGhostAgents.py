@@ -12,13 +12,13 @@ from game import Actions
 from util import manhattanDistance
 import util
 
-class StationaryGhost( ghostAgents.GhostAgent ):
+class StationaryGhost(ghostAgents.GhostAgent):
     def getDistribution( self, state ):
         dist = util.Counter()
         dist[Directions.STOP] = 1.0
         return dist
 
-class DispersingGhost( ghostAgents.GhostAgent ):
+class DispersingGhost(ghostAgents.GhostAgent):
     "Chooses an action that distances the ghost from the other ghosts with probability spreadProb."
     def __init__( self, index, spreadProb=0.5):
         self.index = index

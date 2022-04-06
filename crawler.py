@@ -2,14 +2,9 @@ from __future__ import division
 # crawler.py
 # ----------
 #!/usr/bin/python
-from builtins import range
 from builtins import object
-from past.utils import old_div
-import math
-from math import pi as PI
-import time
 import environment
-import random
+
 
 class CrawlingRobotEnvironment(environment.Environment):
 

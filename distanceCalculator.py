@@ -21,7 +21,8 @@ shouldn't need to modify the Distancer code in order to use its
 distances.
 """
 
-import threading, sys, time, random
+import threading, sys, time
+
 
 class Distancer:
   def __init__(self, layout, background=True, default=10000):
