@@ -167,14 +167,10 @@ class QLearningAgent(ReinforcementAgent):
 
         """
         # TRACE for transition and position to update. Comment the following lines if you do not want to see that trace
-#         print("Update Q-table with transition: ", state, action, nextState, reward)
+        # print("Update Q-table with transition: ", state, action, nextState, reward)
         position = self.computePosition(state)
         action_column = self.actions[action]
-#         print("Corresponding Q-table cell to update:", position, action_column)
-
-        
-        
-        "*** YOUR CODE HERE ***"
+        # print("Corresponding Q-table cell to update:", position, action_column)
 
         legalActions = self.getLegalActions(state)
 
