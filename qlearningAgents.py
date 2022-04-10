@@ -174,11 +174,11 @@ class QLearningAgent(ReinforcementAgent):
 
         legalActions = self.getLegalActions(state)
 
-        if len(legalActions)<=1:
+        if len(legalActions)<=1: # Terminal state
             # Q(state,action) <- (1-self.alpha) Q(state,action) + self.alpha * (r + 0)
             new_state_value = (1-self.alpha) * self.getQValue(state, action) + self.alpha * (reward + 0)
             self.q_table[position][action_column] = new_state_value
-        else:
+        else: # Not a terminal state
             # Q(state,action) <- (1-self.alpha) Q(state,action) + self.alpha * (r + self.discount * max a' Q(nextState, a'))
             new_state_value = (1 - self.alpha) * self.getQValue(state, action) + self.alpha * (reward + self.discount * self.getQValue(nextState, self.getPolicy(nextState)))
             self.q_table[position][action_column] = new_state_value
